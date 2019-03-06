@@ -38,10 +38,14 @@ class Sorting
 
 	private static Comparable[] recursiveBubbleSort(Comparable[] arr, int index)
 	{
+		//base case
 		if (index == 1)
 		{
 			return arr;
 		}
+
+		//recursive case
+		//starts with the largest number and each call finds the length - indexth largest number
 		Comparable temp;
 		for (int i = 0; i < index - 1; i++)
 		{
