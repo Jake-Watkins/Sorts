@@ -2,10 +2,22 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 class Sorting
 {
-	//TODO: Implement selectionSort
 	static Comparable[] selectionSort(Comparable[] arr)
 	{
-		throw new NotImplementedException();
+		for(int i = 0;i<arr.length;i++){
+			Comparable minValue = arr[i];
+			int index = i;
+			for(int j = i+1;j<arr.length;j++){
+				if(minValue.compareTo(arr[j])>=0){
+					minValue = arr[j];
+					index = j;
+				}
+			}
+			Comparable tempValue = arr[i];
+			arr[i] = arr[index];
+			arr[index] = tempValue;
+		}
+		return arr;
 	}
 
 	//TODO: Implement bubbleSort

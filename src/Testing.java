@@ -8,6 +8,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class Testing
 {
+	private static final int arrlength = 10;
 	private static Map<String, Function<Comparable[], Comparable[]>> commands;
 	private static Integer[] scrambled;
 	private static Integer[] sorted;
@@ -16,6 +17,7 @@ public class Testing
 		buildArray();
 		buildCommands();
 		testFunctions();
+		printArrays();
 	}
 
 	private static void testFunctions()
@@ -24,7 +26,7 @@ public class Testing
 		{
 			try
 			{
-				Integer[] output = (Integer[]) entry.getValue().apply(scrambled);
+				Comparable[] output = entry.getValue().apply(scrambled.clone());
 				if(compareOutputs(output, sorted)){
 					System.out.printf("%s returned correctly%n",entry.getKey());
 				}
@@ -39,10 +41,10 @@ public class Testing
 		}
 	}
 
-	private static boolean compareOutputs(Integer[] output, Integer[] sorted)
+	private static boolean compareOutputs(Comparable[] output, Comparable[] sorted)
 	{
 		for(int i = 0;i<output.length;i++){
-			if(!Objects.equals(output[i], sorted[i])){
+			if(output[i].compareTo(sorted[i])!=0){
 				return false;
 			}
 		}
@@ -51,7 +53,7 @@ public class Testing
 
 	private static void buildArray()
 	{
-		scrambled = new Integer[1024];
+		scrambled = new Integer[arrlength];
 		Random rand = new Random();
 		for (int i = 0; i < scrambled.length; i++)
 		{
@@ -59,6 +61,13 @@ public class Testing
 		}
 		sorted = scrambled.clone();
 		Arrays.sort(sorted);
+		printArrays();
+	}
+
+	private static void printArrays()
+	{
+		System.out.println(Arrays.toString(scrambled));
+		System.out.println(Arrays.toString(sorted));
 	}
 
 	private static void buildCommands()
