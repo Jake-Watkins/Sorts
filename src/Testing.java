@@ -31,7 +31,7 @@ public class Testing
 					System.out.printf("%s returned correctly%n",entry.getKey());
 				}
 				else{
-
+					System.err.printf("%s returned incorrectly%n",entry.getKey());
 					System.out.printf("%s returned incorrectly%n",entry.getKey());
 				}
 			}

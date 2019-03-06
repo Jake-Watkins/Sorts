@@ -4,17 +4,23 @@ class Sorting
 {
 	static Comparable[] selectionSort(Comparable[] arr)
 	{
+		Comparable minValue;
+		int index;
 		for(int i = 0;i<arr.length;i++){
-			Comparable minValue = arr[i];
-			int index = i;
+			minValue = arr[i];
+			index = i;
+
+			//find i-th minimum value
 			for(int j = i+1;j<arr.length;j++){
 				if(minValue.compareTo(arr[j])>=0){
 					minValue = arr[j];
 					index = j;
 				}
 			}
+
+			//swap ith minimum value into ith position
 			Comparable tempValue = arr[i];
-			arr[i] = arr[index];
+			arr[i] = minValue;
 			arr[index] = tempValue;
 		}
 		return arr;
