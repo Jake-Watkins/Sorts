@@ -36,14 +36,23 @@ class Sorting
 		return recursiveBubbleSort(arr, arr.length);
 	}
 
-	//TODO: Implement recursiveBubbleSort
-	private static Comparable[] recursiveBubbleSort(Comparable[] arr, int length)
+	private static Comparable[] recursiveBubbleSort(Comparable[] arr, int index)
 	{
-		if (length == 1)
+		if (index == 1)
 		{
 			return arr;
 		}
-		throw new NotImplementedException();
+		Comparable temp;
+		for (int i = 0; i < index - 1; i++)
+		{
+			if (arr[i].compareTo(arr[i + 1]) >= 0)
+			{
+				temp = arr[i];
+				arr[i] = arr[i + 1];
+				arr[i + 1] = temp;
+			}
+		}
+		return recursiveBubbleSort(arr, index - 1);
 	}
 
 	//TODO: Implement insertionSort
