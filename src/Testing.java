@@ -30,11 +30,10 @@ public class Testing
 				}
 				else{
 					System.err.printf("%s returned incorrectly%n",entry.getKey());
-					System.out.printf("%s returned incorrectly%n",entry.getKey());
 				}
 			}
 			catch (NotImplementedException e){
-				System.out.printf("%s not implemented%n",entry.getKey());
+				//System.out.printf("%s not implemented%n",entry.getKey());
 			}
 		}
 	}
@@ -59,7 +58,7 @@ public class Testing
 		}
 		sorted = scrambled.clone();
 		Arrays.sort(sorted);
-		printArrays();
+		//printArrays();
 	}
 
 	private static void printArrays()
