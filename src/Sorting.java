@@ -37,10 +37,21 @@ class Sorting
 		throw new NotImplementedException();
 	}
 
-	//TODO: Implement insertionSort
 	static Comparable[] insertionSort(Comparable[] arr)
 	{
-		throw new NotImplementedException();
+		//sort up to the ith element iteratively
+		for (int i = 1; i < arr.length; i++)
+		{
+			int j = i - 1;
+			Comparable temp = arr[i];
+			while (j >= 0 && arr[j].compareTo(temp) >= 0)
+			{
+				arr[j + 1] = arr[j];
+				j--;
+			}
+			arr[j + 1] = temp;
+		}
+		return arr;
 	}
 
 	//TODO: Implement recursiveInsertionSort
