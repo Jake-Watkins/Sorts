@@ -31,9 +31,18 @@ class Sorting
 		throw new NotImplementedException();
 	}
 
-	//TODO: Implement recursiveBubbleSort
 	static Comparable[] recursiveBubbleSort(Comparable[] arr)
 	{
+		return recursiveBubbleSort(arr, arr.length);
+	}
+
+	//TODO: Implement recursiveBubbleSort
+	private static Comparable[] recursiveBubbleSort(Comparable[] arr, int length)
+	{
+		if (length == 1)
+		{
+			return arr;
+		}
 		throw new NotImplementedException();
 	}
 
