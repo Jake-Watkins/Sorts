@@ -19,9 +19,8 @@ class Sorting
 			}
 
 			//swap ith minimum value into ith position
-			Comparable tempValue = arr[i];
+			arr[index] = arr[i];
 			arr[i] = minValue;
-			arr[index] = tempValue;
 		}
 		return arr;
 	}
