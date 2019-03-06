@@ -1,14 +1,13 @@
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Random;
 import java.util.function.Function;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class Testing
 {
-	private static final int arrlength = 10;
+	private static final int arrLength = 1024;
 	private static Map<String, Function<Comparable[], Comparable[]>> commands;
 	private static Integer[] scrambled;
 	private static Integer[] sorted;
@@ -17,7 +16,6 @@ public class Testing
 		buildArray();
 		buildCommands();
 		testFunctions();
-		printArrays();
 	}
 
 	private static void testFunctions()
@@ -53,7 +51,7 @@ public class Testing
 
 	private static void buildArray()
 	{
-		scrambled = new Integer[arrlength];
+		scrambled = new Integer[arrLength];
 		Random rand = new Random();
 		for (int i = 0; i < scrambled.length; i++)
 		{
