@@ -78,6 +78,8 @@ class Sorting
 		{
 			int j = i - 1;
 			Comparable temp = arr[i];
+
+			//move items to the left to insert item into current location
 			while (j >= 0 && arr[j].compareTo(temp) >= 0)
 			{
 				arr[j + 1] = arr[j];
