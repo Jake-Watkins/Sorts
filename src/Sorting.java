@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 class Sorting
@@ -6,12 +7,12 @@ class Sorting
 	{
 		Comparable minValue;
 		int index;
-		for(int i = 0;i<arr.length;i++){
+		for(int i = 0; i<arr.length; i++){
 			minValue = arr[i];
 			index = i;
 
 			//find i-th minimum value
-			for(int j = i+1;j<arr.length;j++){
+			for(int j = i+1; j<arr.length; j++){
 				if(minValue.compareTo(arr[j])>=0){
 					minValue = arr[j];
 					index = j;
@@ -86,7 +87,46 @@ class Sorting
 	//TODO: Implement mergeSort
 	static Comparable[] mergeSort(Comparable[] arr)
 	{
-		throw new NotImplementedException();
+		arr = mergeSort(arr, 0, arr.length - 1);
+		return arr;
+	}
+
+	private static Comparable[] mergeSort(Comparable[] arr, int i, int j)
+	{
+		if (i >= j)
+		{
+			return arr;
+		}
+		int midPoint = (i + j) / 2;
+		arr = mergeSort(arr, i, midPoint);
+		arr = mergeSort(arr, midPoint + 1, j);
+		arr = merge(arr, i, midPoint + 1, j);
+		return arr;
+	}
+
+	private static Comparable[] merge(Comparable[] arr, int i, int midPoint, int j)
+	{
+		;
+
+		//arrays to merge are i to midpoint and midPoint + 1 to j
+		int i1 = 0, i2 = 0;
+		Comparable[] arr1 = Arrays.copyOfRange(arr, i, midPoint);
+		Comparable[] arr2 = Arrays.copyOfRange(arr, midPoint, j + 1);
+		while (i <= j)
+		{
+			if (i2 >= arr2.length || i1 < arr1.length && arr1[i1].compareTo(arr2[i2]) < 0)
+			{
+				arr[i] = arr1[i1];
+				i1++;
+			}
+			else
+			{
+				arr[i] = arr2[i2];
+				i2++;
+			}
+			i++;
+		}
+		return arr;
 	}
 
 	//TODO: Implement iterativeMergeSort
