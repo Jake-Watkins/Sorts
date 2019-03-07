@@ -97,15 +97,13 @@ class Sorting
 		Comparable next = arr[index];
 
 		//sort into range 0 to index - 2
-		int j = index - 1;
-		while (j >= 0 && next.compareTo(arr[j]) < 0)
+		while (--index >= 0 && next.compareTo(arr[index]) < 0)
 		{
-			arr[j + 1] = arr[j];
-			j = j - 1;
+			arr[index + 1] = arr[index];
 		}
 
 		//j+1 since j could be -1 in the case it is the first element
-		arr[j + 1] = next;
+		arr[index + 1] = next;
 		return arr;
 	}
 
