@@ -80,7 +80,33 @@ class Sorting
 	//TODO: Implement recursiveInsertionSort
 	static Comparable[] recursiveInsertionSort(Comparable[] arr)
 	{
-		throw new NotImplementedException();
+		return recursiveInsertionSort(arr, arr.length - 1);
+	}
+
+	private static Comparable[] recursiveInsertionSort(Comparable[] arr, int index)
+	{
+		//base case
+		if (index == 1)
+		{
+			return arr;
+		}
+		//recursive case
+		arr = recursiveInsertionSort(arr, index - 1);
+
+		//sort the next element
+		Comparable next = arr[index];
+
+		//sort into range 0 to index - 2
+		int j = index - 1;
+		while (j >= 0 && next.compareTo(arr[j]) < 0)
+		{
+			arr[j + 1] = arr[j];
+			j = j - 1;
+		}
+
+		//j+1 since j could be -1 in the case it is the first element
+		arr[j + 1] = next;
+		return arr;
 	}
 
 	//TODO: Implement mergeSort
