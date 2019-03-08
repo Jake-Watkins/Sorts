@@ -106,27 +106,31 @@ class Sorting
 
 	private static Comparable[] merge(Comparable[] arr, int i, int midPoint, int j)
 	{
-		;
 
 		//arrays to merge are i to midpoint and midPoint + 1 to j
-		int i1 = 0, i2 = 0;
-		Comparable[] arr1 = Arrays.copyOfRange(arr, i, midPoint);
-		Comparable[] arr2 = Arrays.copyOfRange(arr, midPoint, j + 1);
+		//more memory allocation but faster than in place
+		int i1 = i,
+			i2 = midPoint,
+			len1 = i + j - midPoint + 1,
+			len2 = midPoint + midPoint - i;
+		Comparable[] rtn = Arrays.copyOf(arr, arr.length);
+
 		while (i <= j)
 		{
-			if (i2 >= arr2.length || i1 < arr1.length && arr1[i1].compareTo(arr2[i2]) < 0)
+
+			if (i2 >= len2 || i1 < len1 && arr[i1].compareTo(arr[i2]) < 0)
 			{
-				arr[i] = arr1[i1];
+				rtn[i] = arr[i1];
 				i1++;
 			}
 			else
 			{
-				arr[i] = arr2[i2];
+				rtn[i] = arr[i2];
 				i2++;
 			}
 			i++;
 		}
-		return arr;
+		return rtn;
 	}
 
 	//TODO: Implement iterativeMergeSort
